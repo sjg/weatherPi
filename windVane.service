@@ -1,0 +1,32 @@
+#!/bin/bash
+# /etc/init.d/windVane
+
+# Run sudo update-rc.d /etc/init.d/windVane defaults  to run service at boot
+
+### BEGIN INIT INFO
+# Provides:          windVane
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Example initscript
+# Description:       This service is used to manage the windVane Visualisation
+### END INIT INFO
+
+case "$1" in
+    start)
+        echo "Starting WindVane"
+	node /home/pi/windVane/windVane.js > /dev/null &
+        ;;
+    stop)
+        echo "Stopping WindVane"
+	killall node
+        python /home/pi/windVane/LEDStrip.py -x off
+        ;;
+    *)
+        echo "Usage: /etc/init.d/windVane start|stop"
+        exit 1
+        ;;
+esac
+
+exit 0
