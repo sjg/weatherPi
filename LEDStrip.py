@@ -11,6 +11,7 @@ caution = Color(255,0,183)
 safe = Color(0,0,255)
 start = Color(255,255,255)
 
+# Color Declarations
 warningTemp = Color(215,28,25)
 cautionTemp = Color(255,0,127)
 safeTemp = Color(0,0,255)
